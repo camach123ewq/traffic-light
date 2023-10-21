@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .traffic-light {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 150px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 20px;
+        }
+
+        .light {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 50%;
+            background-color: gray;
+        }
+
+        .red.active {
+            background-color: red;
+        }
+
+        .yellow.active {
+            background-color: yellow;
+        }
+
+        .green.active {
+            background-color: green;
+        }
+
+        #countdown {
+            font-size: 24px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="traffic-light">
+        <div id="red-light" class="light red"></div>
+        <div id="yellow-light" class="light yellow"></div>
+        <div id="green-light" class="light green"></div>
+        <button id="switch-button">Switch Light</button>
+    </div>
+
+    <script>
+        const redLight = document.getElementById('red-light');
+        const yellowLight = document.getElementById('yellow-light');
+        const greenLight = document.getElementById('green-light');
+        const switchButton = document.getElementById('switch-button');
+        let currentLight = 'red';
+
+        switchButton.addEventListener('click', function() {
+            switch (currentLight) {
+                case 'red':
+                    redLight.classList.remove('active');
+                    yellowLight.classList.add('active');
+                    greenLight.classList.remove('active');
+                    currentLight = 'yellow';
+                    break;
+                case 'yellow':
+                    redLight.classList.remove('active');
+                    yellowLight.classList.remove('active');
+                    greenLight.classList.add('active');
+                    currentLight = 'green';
+                    break;
+                case 'green':
+                    redLight.classList.add('active');
+                    yellowLight.classList.remove('active');
+                    greenLight.classList.remove('active');
+                    currentLight = 'red';
+                    break;
+            }
+        });
+    </script>
+</body>
+</html>
